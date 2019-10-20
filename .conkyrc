@@ -29,16 +29,20 @@ override_utf8_locale no
 use_spacer right
 
 TEXT
-${font Arial:size=20}${color Tan1}SAHAR${color Ivory}LINUX
+${font Ubuntu Mono:size=20}${color Tan1}SAHAR${color Ivory}LINUX
 
-${voffset -90}
+${voffset -100}
 ${color DimGray}
 ${font}
-${font Arial:bold:size=10}${color Tan1}SYSTEM ${color DarkSlateGray} ${hr 2}
-$font${color DimGray}$sysname $kernel $alignr $machine
+${font Ubuntu Mono:bold:size=10}${color Tan1}SYSTEM ${color DarkSlateGray} ${hr 2}
+$font${color DimGray}$sysname $kernel $alignr $machine $freq
 Uptime $alignr${uptime}
+Arch $alignr${machine}
+Frequency $alignr${freq} MHz
+MAC Address $alignr${execi 99999 cat /sys/class/net/eth0/address}
 
-${font Arial:bold:size=10}${color Tan1}CPU ${color DarkSlateGray}${hr 2}
+
+${font Ubuntu Mono:bold:size=10}${color Tan1}CPU ${color DarkSlateGray}${hr 2}
 $font${color DimGray}Temp: $alignr ${exec /opt/vc/bin/vcgencmd measure_temp | cut -c6-9} C
 $font${color DimGray}CPU1  ${cpu cpu1}% ${cpubar cpu1}
 CPU2  ${cpu cpu2}% ${cpubar cpu2}
@@ -46,21 +50,18 @@ CPU3  ${cpu cpu3}% ${cpubar cpu3}
 CPU4  ${cpu cpu4}% ${cpubar cpu4}
 ${cpugraph DimGray DarkSlateGray} $color
 
-${font Arial:bold:size=10}${color Tan1}MEMORY ${color DarkSlateGray}${hr 2}
+${font Ubuntu Mono:bold:size=10}${color Tan1}MEMORY ${color DarkSlateGray}${hr 2}
 $font${color DimGray}MEM $alignc $mem / $memmax $alignr $memperc%
 $membar
 $font${color DimGray}SWAP $alignc $swap / $swapmax $alignr $swapperc%
 $swapbar
 
-${font Arial:bold:size=10}${color Tan1}HDD ${color DarkSlateGray}${hr 2}
+${font Ubuntu Mono:bold:size=10}${color Tan1}HDD ${color DarkSlateGray}${hr 2}
 $font${color DimGray}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_free_perc /home}%
 ${fs_bar /home}
 
-${font Arial:bold:size=10}${color Tan2}NETWORK ${color DarkSlateGray}${hr 2}
+${font Ubuntu Mono:bold:size=10}${color Tan2}NETWORK ${color DarkSlateGray}${hr 2}
 $font${color DimGray}IP on wlan0 $alignr ${addr wlan0}
 
 Down $alignr ${downspeed wlan0} kb/s
 Up $alignr ${upspeed wlan0} kb/s
-
-Downloaded: $alignr  ${totaldown wlan0}
-Uploaded: $alignr  ${totalup wlan0}

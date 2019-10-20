@@ -29,12 +29,12 @@ override_utf8_locale no
 use_spacer right
 
 TEXT
-${font Ubuntu Mono:size=20}${color Tan1}Raspberry-${color Ivory}Pi4
+#${font Ubuntu Mono:size=20}${color Tan1}Raspberry-${color Ivory}Pi4
 
-${voffset -100}
-${color DimGray}
-${font}
-${font Ubuntu Mono:bold:size=10}${color Tan1}SYSTEM ${color DarkSlateGray} ${hr 2}
+#${voffset -100}
+#${color DimGray}
+#${font}
+${font Ubuntu Mono:bold:size=10}${color Tan1}OPERATING SYSTEM ${color DarkSlateGray} ${hr 2}
 $font${color DimGray}$sysname $kernel $alignr $machine
 Frequency $alignr${freq} MHz
 Uptime $alignr${uptime}
@@ -48,14 +48,13 @@ Uploading speed $alignr ${upspeed wlan0} kb/s
 Hardware $alignr${execi 1000 cat /proc/cpuinfo | grep 'Hardware' | sed -e 's/Hardware.*: //'| uniq | cut -c 1-35}
 Model $alignr${execi 1000 cat /proc/cpuinfo | grep 'Model' | sed -e 's/Model.*: //'| uniq | cut -c 1-35}
 
-
 ${font Ubuntu Mono:bold:size=10}${color Tan1}CPU ${color DarkSlateGray}${hr 2}
 $font${color DimGray}Temp: $alignr ${exec /opt/vc/bin/vcgencmd measure_temp | cut -c6-9} C
 $font${color DimGray}CPU1  ${cpu cpu1}% ${cpubar cpu1}
 CPU2  ${cpu cpu2}% ${cpubar cpu2}
 CPU3  ${cpu cpu3}% ${cpubar cpu3}
 CPU4  ${cpu cpu4}% ${cpubar cpu4}
-${cpugraph DimGray DarkSlateGray} $color
+#${cpugraph DimGray DarkSlateGray} $color
 
 ${font Ubuntu Mono:bold:size=10}${color Tan1}MEMORY ${color DarkSlateGray}${hr 2}
 $font${color DimGray}MEM $alignc $mem / $memmax $alignr $memperc%

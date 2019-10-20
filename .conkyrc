@@ -29,17 +29,24 @@ override_utf8_locale no
 use_spacer right
 
 TEXT
-${font Ubuntu Mono:size=20}${color Tan1}SAHAR${color Ivory}LINUX
+${font Ubuntu Mono:size=20}${color Tan1}Raspberry-${color Ivory}Pi4
 
 ${voffset -100}
 ${color DimGray}
 ${font}
 ${font Ubuntu Mono:bold:size=10}${color Tan1}SYSTEM ${color DarkSlateGray} ${hr 2}
-$font${color DimGray}$sysname $kernel $alignr $machine $freq
+$font${color DimGray}$sysname $kernel $alignr $machine
+Frequency $alignr${freq} MHz
 Uptime $alignr${uptime}
 Arch $alignr${machine}
-Frequency $alignr${freq} MHz
 MAC Address $alignr${execi 99999 cat /sys/class/net/eth0/address}
+IP on wlan0 $alignr ${addr wlan0}
+
+Downloading speed $alignr ${downspeed wlan0} kb/s
+Uploading speed $alignr ${upspeed wlan0} kb/s
+
+Hardware $alignr${execi 1000 cat /proc/cpuinfo | grep 'Hardware' | sed -e 's/Hardware.*: //'| uniq | cut -c 1-35}
+Model $alignr${execi 1000 cat /proc/cpuinfo | grep 'Model' | sed -e 's/Model.*: //'| uniq | cut -c 1-35}
 
 
 ${font Ubuntu Mono:bold:size=10}${color Tan1}CPU ${color DarkSlateGray}${hr 2}
@@ -59,9 +66,3 @@ $swapbar
 ${font Ubuntu Mono:bold:size=10}${color Tan1}HDD ${color DarkSlateGray}${hr 2}
 $font${color DimGray}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_free_perc /home}%
 ${fs_bar /home}
-
-${font Ubuntu Mono:bold:size=10}${color Tan2}NETWORK ${color DarkSlateGray}${hr 2}
-$font${color DimGray}IP on wlan0 $alignr ${addr wlan0}
-
-Down $alignr ${downspeed wlan0} kb/s
-Up $alignr ${upspeed wlan0} kb/s

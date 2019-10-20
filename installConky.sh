@@ -1,6 +1,4 @@
 #!/bin/bash
-echo "Update System"
-sudo apt-get update -y
 echo "Installing Conky"
 sudo apt-get install -y conky-all
 echo "Downloading conky configuration file"

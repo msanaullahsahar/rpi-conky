@@ -29,6 +29,7 @@ override_utf8_locale no
 use_spacer right
 
 TEXT
+
 #${font Ubuntu Mono:size=20}${color Tan1}Raspberry-${color Ivory}Pi4
 
 #${voffset -100}
